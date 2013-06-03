@@ -1,0 +1,72 @@
+h2. This page is out of date. We no longer recommend installing hydra-jetty as a submodule. With hydra 6.0+  Use the hydra:jetty generator instead.
+
+h3. Goal
+
+Restore a git submodule (such as hydra-jetty) to its pristine original state.  For example, this is a way to purge all of your local changes in the jetty directory, reverting it back to the original state.
+
+Note that hydra-jetty is used for testing, and can be used for development or even production.
+
+h4. Background
+
+The jetty directory is tracked as a git submodule that points to projecthydra/hydra-jetty (a separate github repository).  This means that every time you clone hydra-head and run git submodule update, you should get a fresh, empty copy of hydra-jetty.
+
+You can clean all the objects out of the Fedora and Solr instances in the jetty directory by reverting the jetty git submodule back to the original state of the hydra-jetty git repository.
+
+h3. Instructions
+
+Let's say your repository looks like this:
+
+<pre>
+cd jetty
+git status
+# Not currently on any branch.
+# Changed but not updated:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   solr/development-core/conf/solrconfig.xml
+#	modified:   solr/test-core/conf/solrconfig.xml
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	fedora/default/data/
+#	fedora/default/derby/
+#	fedora/default/server/fedora-internal-use/fedora-internal-use-backend-service-policies/
+#	fedora/default/server/logs/
+#	fedora/default/server/management/upload/
+</pre>
+
+h4. git clean
+
+git clean removes all of the untracked files, which in this case includes your Fedora objects, your Solr index, etc.
+
+<pre>
+git clean -df
+git status
+# Not currently on any branch.
+# Changed but not updated:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   solr/development-core/conf/solrconfig.xml
+#	modified:   solr/test-core/conf/solrconfig.xml
+#
+</pre>
+
+h4. git checkout 
+
+git checkout will reset the files that _are_ tracked by git (e.g. Solr config files).
+
+<pre>
+git checkout .
+</pre>
+
+After running git clean and git checkout, the git submodule is restored to its original state:
+
+<pre>
+git checkout .
+git status
+# Not currently on any branch.
+nothing to commit (working directory clean)
+</pre>

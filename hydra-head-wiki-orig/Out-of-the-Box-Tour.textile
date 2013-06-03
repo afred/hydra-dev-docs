@@ -1,0 +1,94 @@
+h2. __!!! THIS TUTORIAL IS OUT OF DATE. FOR A MORE UP TO DATE TUTORIAL, SEE "Code4Lib Walkthrough":https://github.com/projecthydra/hydra-head/wiki/Code4lib-walkthrough !!!__
+
+This page simply tours through what comes out of the box with hydra-head and lets you run the hydra-head tests within your app in case you want to confirm that everything was installed properly.  
+
+To learn how to actually create a Rails app using hydra-head, see [[How-to-Get-Started]]
+
+h3. Ensure your Hydra App is set up properly: Import Sample Content and Run Tests!
+
+h4. (1) Import some Sample Content
+
+At some point, we hope to create actual Sample objects for hydra-head.  In the meantime, we're re-using the Fixture objects that we use to test the hydra-head gem.  These fixture objects are not designed to look nice.  Instead, they are designed to exercise various aspects of the hydra-head code.
+
+If you're interested in creating and contributing some sample objects for us to distribute with the hdyra-head code and use in this tutorial. Please email the "hydra-tech":http://groups.google.com/group/hydra-tech mailing list and let us know.
+
+The hydra-head fixture objects are useful for getting a sense of how hydra works and they will allow you to run the hydra-head gem's test suite in order to make sure that everything was set up properly.  You will want to delete these fixture objects later and create your own fixtures to run your application's tests against.
+
+First, use the hydra:hyhead_fixtures generator to copy the fixture xml files into test_support/fixtures
+
+<pre>
+  rails g hydra:hyhead_fixtures
+</pre>
+
+Now use the hydra:fixtures:refresh rake task to import the fixtures into Fedora and Solr
+
+<pre>
+  rake hydra:fixtures:refresh 
+</pre>
+
+You must run this a second time to load the fixtures into the copies of Fedora & Solr that your tests use.
+
+<pre>
+  rake hydra:fixtures:refresh RAILS_ENV=test
+</pre>
+
+*IMPORTANT*  If you look in config/fedora.yml and config/solr.yml, you will see that these files point to different urls for development, test, and production.  This allows you to keep test data, development data, and production data separate by setting the _Rails environment_ accordingly.  Rails defaults to using the _test_ environment when you run tests and using the _development_ environment when you run the app using "rails server".  
+
+We want these fixture objects to be available in both environments because we want to run tests against them and we want to poke through them in our browser.  That's why we imported the fixtures once without RAILS_ENV set (defaults to 'development') and once with RAILS_ENV set to test.
+
+h4. (2) Run the Hydra-Head gem's RSpec Tests
+
+<pre>
+  rake hyhead:spec
+</pre>
+
+This will print out a lot of information while the tests run.  If all the tests passed, you will see something like this (the important part is "0 failures"):
+
+<pre>
+  ...
+  Finished in 22.53 seconds
+  240 examples, 0 failures, 19 pending
+</pre>
+
+h4. (3) Run the Hydra-Head gem's Cucumber Tests
+
+Before running the cucumber tests, you have to remove the default index.html file that Rails provides
+
+<pre>
+  rm public/index.html
+</pre>
+
+Now run the cucumber tests
+
+<pre>
+  rake hyhead:cucumber
+</pre>
+
+This will print out a lot of information while the tests run.  If all the tests passed, you will see something like this (the important part is that the number of scenarios equals the number of tests passed):
+
+<pre>
+  37 scenarios (37 passed)
+  215 steps (215 passed)
+  0m45.591s
+</pre>
+
+h3. Exploring what comes out of the box
+
+2012-05-02:  this section needs revision.  If you have ideas, go for it!
+
+h4. (1) Create a User Account and Log into the Hydra Head  
+
+Blacklight & the hydra-head plugin provide a basic user authentication that is meant to be replaced by code that connects to your institutional authentication system like LDAP or Shibboleth.  While setting up this sample hydra-head, you need to create user accounts in that system.  To do this, run the application, visit http://localhost:3000 and click on "login" then click on "create an account" below the login form.  
+
+In many of the hydra-head fixtures and in some of the examples below, we gave "edit" permissions to a user called "archivist1@example.com", so create an account with that login id.  Choose whatever email & password you want.  Now you can log in as that user when you want to use features that require you to be logged into the hydra head.
+
+h4. (2) Explore the Application
+
+* Create sample account & log in: _use archivist1@example.com as the email address.  This user has access to read and edit most of the fixtures you loaded when you ran 'rake hydra:fixtures:refresh'_
+* Use facets to browse the content: example: Drill down to all of the assets associated with "TOPIC 1"
+* Run a search. Example: search for "article"
+* Look at one of the sample objects
+* Edit one of the sample objects: some of the objects will display an "edit" link.  Click on that to edit the document.  Edit some of the Descriptive Metadata and then click "Save Description", then Edit the Permissions and click "Save Permissions"
+* Create a new MODS article by clicking "Add a Basic MODS Asset"
+* Upload a file …
+* Change the permissions on the new article, making it visible to the public (before setting permissions, prove that you can’t see it when logged out, then change permissions, log out again & prove that it’s visible)

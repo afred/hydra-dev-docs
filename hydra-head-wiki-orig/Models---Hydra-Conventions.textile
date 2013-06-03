@@ -1,0 +1,31 @@
+h2. Hydra Modeling Conventions
+
+See the duraspace hydra wikis for information at the architecture level: "http://github.com/projecthydra/hydra-head/wiki":http://github.com/projecthydra/hydra-head/wiki
+
+h4. Reference info on the Duraspace Hydra Wiki
+
+"Hydra objects, content models(cModels) and disseminators":https://wiki.duraspace.org/display/hydra/Hydra+objects%2C+content+models+%28cModels%29+and+disseminators
+
+"Don’t Call it a Content Model":https://wiki.duraspace.org/display/hydra/Don%27t+call+it+a+%27content+model%27%21
+
+h4. genericContent cModel
+
+* descMetadata (required): Descriptive Metadata like MODS or DC.  MODS is recommended
+* rightsMetadata (recommended): Rights, License, and Permissions information.  Hydra rightsMetadata XML is recommended.
+h4. Understanding Parts (Where will my uploaded files go?)
+
+h5. Primitives contain actual files
+
+bq. A primitive is a fundamental atom object that bears an actual file payload. They are single, (near-) universal content types which may either stand-alone or be incorporated into higher order content types (in a book or ETD, e.g.).
+
+h5. Higher Level Objects
+
+bq. Higher Level Objects represent higher-level, molecular objects that may have primitives and/or other Higher-level objects as children.
+
+h5. Relationships
+
+isPartOf -- Hydra reserves this predicate for use in representing part-whole relationships between objects.  This occurs most often when representing which Primitives (ie. an uploaded PDF) are _part_ of a Higher Level object (ie. a MODS Article)
+
+h2. For Further Information
+
+See "Reference":https://github.com/projecthydra/hydra-head/wiki/Reference for more links.

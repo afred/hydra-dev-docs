@@ -1,0 +1,56 @@
+h1. For Contributors to the Hydra-Head Gem
+
+h2. Testing the Gem
+
+h3. For the Impatient 
+
+# Clone the Hydra-Head code (to a fresh working copy) <pre>git clone git@github.com:projecthydra/hydra-head.git</pre>
+# Switch to the hydra-head directory <pre>cd hydra-head</pre>
+# Install bundler gem <pre>gem install bundler</pre>
+# Get the project dependencies <pre>bundle install</pre>
+# Grab the jetty submodule <pre>git submodule init; git submodule update</pre>
+# Run the tests <pre>rake ci</pre> 
+This rake task:
+## creates the test apps in hydra-core/spec/internal and hydra-file-access/spec/internal
+## spins up jetty (in jettywrapper)
+## imports fixtures
+## runs rspec
+## kills jetty (in jettywrapper)
+
+h3. More Detailed Instructions & Notes
+
+h4. Hydra-Jetty
+
+In order to test the gem during development, the hydra-jetty is included as a submodule to provide both a fedora and solr instance.  Once you have cloned the github repository, run the following commands to load hydra-jetty:
+
+<pre>
+git submodule init
+git submodule update
+</pre>
+
+To start jetty: <pre>rake jetty:start</pre>
+
+Note: the first time you start hydra-jetty, you must use the following command in order to properly configure jetty:
+
+<pre>
+rake hydra:jetty:load
+</pre>
+
+
+h4.  Testing the gem
+
+The gem must be tested within the context of a Rails 3 application.  
+
+A rake task is provided for setting up a rails 3 test app in the hydra-core/spec/internal and hydra-file-access/spec/internal directories.  To generate the app, run:
+
+<pre>
+rake generate
+</pre>
+
+The specs fixtures for testing the Hydra-Head gem are all contained within the spec/support directories of the gems.  Once you have installed the test app and have Hydra-Jetty running, you will be able to run the specs for each gem via the provided rake tasks.
+
+In order to run a single spec use the following from the command line:
+
+<pre>
+rake spec SPEC=spec/controllers/catalog_controller_spec.rb  # path to the spec file you wish to run
+</pre>

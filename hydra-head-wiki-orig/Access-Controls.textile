@@ -1,0 +1,123 @@
+h1. Access Controls in Hydra
+
+This document is incomplete; please contribute if you can. (Tested with hydra-head 6.0.0 on 2013-04-08 by @jcoyne)
+
+Developer questions can also be directed to the "hydra-tech list":http://groups.google.com/group/hydra-tech or the freenode #projecthydra IRC channel.
+
+See also "hydra-access-controls README":https://github.com/projecthydra/hydra-head/tree/master/hydra-access-controls.
+
+h3. Custom Models & RightsMetadata
+
+If you are using your own custom models, you need to make sure to use the hydra rightsMetadata datastream (see xxx models for examples).  The information you put into the rightsMetadata datastream will be indexed and used to enforce access permissions.
+
+<pre>
+class MyModel < ActiveFedora::Base
+  has_metadata "rightsMetadata", type: Hydra::Datastream::RightsMetadata
+  # to use Hydra methods to manage rightsMetadata:
+  include Hydra::ModelMixins::RightsMetadata
+end
+</pre>
+
+h3. Using Admin Policy Objects (APOs)
+
+See the "Hydra project wiki":https://wiki.duraspace.org/display/hydra/Hydra+objects%2C+content+models+%28cModels%29+and+disseminators for more information.  You can create APOs with the Hydra::AdminPolicy class or your own subclass.  To allow your custom model to be governed by an APO, add this to your class:
+
+<pre>
+class MyModel < ActiveFedora::Base
+  # ...
+  belongs_to :admin_policy, :property=>:is_governed_by
+end
+</pre>
+
+If you create your own AdminPolicy class (subclassing Hydra::AdminPolicy), configure Hydra to use it instead of the default:
+
+```ruby
+# config/initializers/hydra_config.rb
+  Hydra.configure(:shared) do |config|
+    # ... other stuff ...
+    config[:permissions][:policy_class] = AdminPolicy # replace with your APO class name
+  end
+```
+
+h4. Modifying solr field names for enforcement
+
+Hydra uses its own set of default solr field names to track rights-related metadata in solr.  If you want to use your own field names, you can change them in your Hydra config.  You will also have to modify the permissions response handler in your solrconfig.xml to return those fields.
+
+```ruby
+# config/initializers/hydra_config.rb
+  Hydra.configure(:shared) do |config|
+    # ... other stuff ...
+    indexer = Solrizer::Descriptor.new(:string, :stored, :indexed, :multivalued)
+    config[:permissions] = {
+      :discover => {:group =>ActiveFedora::SolrService.solr_name("discover_access_group", indexer), :individual=>ActiveFedora::SolrService.solr_name("discover_access_person", indexer)},
+      :read => {:group =>ActiveFedora::SolrService.solr_name("read_access_group", indexer), :individual=>ActiveFedora::SolrService.solr_name("read_access_person", indexer)},
+      :edit => {:group =>ActiveFedora::SolrService.solr_name("edit_access_group", indexer), :individual=>ActiveFedora::SolrService.solr_name("edit_access_person", indexer)},
+      :owner => ActiveFedora::SolrService.solr_name("depositor", indexer),
+      :embargo_release_date => ActiveFedora::SolrService.solr_name("embargo_release_date", Solrizer::Descriptor.new(:date, :stored, :indexed))
+    }
+    config[:permissions][:inheritable] = {
+      :discover => {:group =>ActiveFedora::SolrService.solr_name("inheritable_discover_access_group", indexer), :individual=>ActiveFedora::SolrService.solr_name("inheritable_discover_access_person", indexer)},
+      :read => {:group =>ActiveFedora::SolrService.solr_name("inheritable_read_access_group", indexer), :individual=>ActiveFedora::SolrService.solr_name("inheritable_read_access_person", indexer)},
+      :edit => {:group =>ActiveFedora::SolrService.solr_name("inheritable_edit_access_group", indexer), :individual=>ActiveFedora::SolrService.solr_name("inheritable_edit_access_person", indexer)},
+      :owner => ActiveFedora::SolrService.solr_name("inheritable_depositor", indexer),
+      :embargo_release_date => ActiveFedora::SolrService.solr_name("inheritable_embargo_release_date", Solrizer::Descriptor.new(:date, :stored, :indexed))
+    }
+  end
+```
+
+h3. Solr Index Sanity Check
+
+This check ensures that the rightsMetadata from your objects is being indexed correctly.
+
+start the rails console:  ```rails console``` and enter this:
+```ruby
+class MyModel < ActiveFedora::Base
+  has_metadata "rightsMetadata", type: Hydra::Datastream::RightsMetadata
+  # to use Hydra methods to manage rightsMetadata:
+  include Hydra::ModelMixins::RightsMetadata
+end
+
+a = MyModel.new(pid: 'test:1')
+a.read_groups = ['public']
+a.save!
+```
+
+Now examine the xml returned from this url:
+
+<pre>
+http://localhost:8983/solr/development/select/?q=id:test\:1
+</pre>
+
+(Note: if you're not using the bundled jetty, or if you're testing your production Solr instance, you have to replace [http://localhost:8983/solr/development] with the URL for your copy of Solr.
+
+Among many other things, it should include this:
+
+<pre>
+<arr name="read_access_group_ssim"><str>public</str></arr>
+</pre>
+
+If this is not the case, then your objects are not being indexed correctly.  This will cause your objects to be "hidden" because Hydra's access controls default to denying access to objects when the rightsMetadata info is not available in Solr.
+
+h2. How Permissions are Expressed in Hydra rightsMetadata
+
+h2. How Permissions are Indexed into Solr Documents
+
+h2. How you can use Alternative Field Names in Solr to Enforce Permissions
+
+h3. The Access Controls Evaluation helpers
+
+In your controllers and views you can test whether the current user has read or edit permissions on the current document by calling ```can? :edit, @document``` or ```can? :read, @pid``` 
+
+h2. Assigning "Public" permissions
+
+In order to give permissions to the public (including users who are not logged in), simply grant group permissions for the "public" group.  For example, to give the public "read" permissions, add this to the rightsMetadata
+
+<pre>
+  <access type="read">
+    <machine>
+      <group>public</group>
+    </machine>
+  </access>
+</pre>
+
+This will add "public" to read_access_group_ssim in solr.

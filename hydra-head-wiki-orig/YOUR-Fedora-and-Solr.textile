@@ -1,0 +1,13 @@
+Note:  this documentation is from the Duraspace wiki (last updated November 2010) - it needs to be updated / vetted / etc.
+
+When you set up a production environment, you will need to set up Fedora and Solr externally to your hydra head.  The copy of Jetty that's included in the hydra code is meant to be used only for development & testing.
+
+h2. Basic Installation Instructions
+
+Until we get around to filling out this page, refer to MediaShelf's instructions for [http://projects.mediashelf.us/wiki/8/Setting_up_Fedora_and_Solr_for_use_with_ActiveFedora|Setting up Fedora and Solr for use with ActiveFedora] *Note*: Those instructions might be slightly out of date.  If you've got better instructions, please post them here!
+
+h2. Final Step: Apply your Hydra head's Solr Configs
+
+Every Hydra head has its own Solr configuration files saved in the "solr" directory.  Within your (rails) dev environment, the files from "solr/config" are copied into "jetty/solr/config" when you run rake hydra:jetty:load.  For your external copy of Solr, you will have to apply these files manually.  When you set up Solr, you have to specify a SOLR_HOME.  These files should be copied there (ie. "solr/conf/solrconfig.xml" should be copied to $SOLR_HOME/config/solrconfig.xml")
+
+You will have to repeat this process whenever you change the Solr config files in your hydra head.

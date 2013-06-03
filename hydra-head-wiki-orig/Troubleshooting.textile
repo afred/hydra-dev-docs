@@ -1,0 +1,9 @@
+Also see [[How do I ...]]
+
+Developer questions can also be directed to the "hydra-tech list":http://groups.google.com/group/hydra-tech or the freenode #projecthydra IRC channel.
+
+h2. Solr Errors 
+
+h3. No searcher 'permissions' 
+
+When Solr complains that there is no searcher 'permissions', it means that you haven't copied the solr configs into jetty. You can fix this by running  <pre>rake hydra:jetty:config</pre> then stoping and starting jetty.
