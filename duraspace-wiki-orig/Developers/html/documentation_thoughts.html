@@ -1,0 +1,380 @@
+<div id="main-content" class="wiki-content">
+                           <h1 id="DocumentationThoughts-Documentationfor(PotentialAdopters/Architects/Coders)">Documentation for (Potential Adopters / Architects / Coders)</h1>
+
+<p>Not all of this will be solely for coders.</p>
+
+<h3 id="DocumentationThoughts-documentationstyleguide">documentation style guide</h3>
+
+<ul>
+  <li>date the docs and indicate versions numbers of the code</li>
+  <li>jump to index for each page</li>
+  <li>searchable in site specific google</li>
+</ul>
+
+
+<h3 id="DocumentationThoughts-Overviews">Overviews</h3>
+
+<ul>
+  <li>where to find documentation
+  <ul>
+    <li>projecthydra.org ...</li>
+    <li>duraspace wiki ...</li>
+    <li>github wiki</li>
+    <li>rdocs</li>
+    <li>docs included with gem (e.g. README)</li>
+  </ul>
+  </li>
+</ul>
+
+
+<ul>
+  <li>diagrams  (can have hovers, be clickable)
+  <ul>
+    <li>simplest "read" "cud"  (Create-Update-Delete / Read ; Hydra / Blacklight ; Fedora / Solr )</li>
+    <li>entire stack</li>
+    <li>where are API access points</li>
+    <li>relationships among gems</li>
+    <li>if you use xxx then you must also use ... (OM -&gt; Solrizer, AF -&gt; Fedora, ...)</li>
+    <li>access rights</li>
+    <li>get Tom's pres for docs</li>
+  </ul>
+  </li>
+</ul>
+
+
+<ul>
+  <li>high level overview
+  <ul>
+    <li>all the pieces</li>
+    <li>relationships among the pieces</li>
+    <li>links out to more information for each piece / api</li>
+    <li>detailed enough for full info</li>
+    <li>Ray (UVa) will start a doc like this.</li>
+  </ul>
+  </li>
+</ul>
+
+
+
+<ul>
+  <li>Should I Adopt?
+  <ul>
+    <li>what is Hydra
+    <ul>
+      <li>what does it do?</li>
+      <li>here are the solutions
+      <ul>
+        <li>examples of applications</li>
+      </ul>
+      </li>
+      <li>here are the people</li>
+      <li>start out with what it does</li>
+    </ul>
+    </li>
+    <li>what is in hydra?</li>
+    <li>how can i use it</li>
+    <li>do i need to use ALL the pieces</li>
+    <li>getting started  (three sections:  Overview / Architecture / Implementers)</li>
+  </ul>
+  </li>
+</ul>
+
+
+
+<p>projecthydra.org  – new adopters  (John Dunn, ...)<br>
+duraspace wiki – architects  (Lynn, Dean, Simeon, Giarlo)<br>
+github – coders (Ben, Naomi, Giarlo)</p>
+
+
+<h3 id="DocumentationThoughts-adoptingthefullstack">adopting the full stack</h3>
+
+<ul>
+  <li>you don't have to use full stack to be part of the community</li>
+  <li>for architects, for managers (Dean, Lynn, Tom, Richard)</li>
+  <li>for implementers - how to do it</li>
+</ul>
+
+
+<h3 id="DocumentationThoughts-exampleimplementations">example implementations</h3>
+
+<ul>
+  <li>duraspace wiki tech details to share (e.g. hypatia)</li>
+  <li>projecthydra links to top page for each example</li>
+</ul>
+
+
+
+<h3 id="DocumentationThoughts-utilityofeachgem">utility of each gem</h3>
+
+<h3 id="DocumentationThoughts-eachgem">each gem</h3>
+
+<ul>
+  <li>how to use it</li>
+  <li>examples of how it is being used
+  <ul>
+    <li>in full stack</li>
+    <li>not in stack (multiple examples welcome)</li>
+  </ul>
+  </li>
+  <li>diagrams / illustrations</li>
+</ul>
+
+
+
+<h3 id="DocumentationThoughts-AdditionalDocs">Additional Docs</h3>
+
+<h3 id="DocumentationThoughts-dealingwithaccess/rights">dealing with access / rights</h3>
+
+<ul>
+  <li>full stack</li>
+  <li>blacklight</li>
+</ul>
+
+
+<h3 id="DocumentationThoughts-Coders">Coders</h3>
+
+<ul>
+  <li>post to list</li>
+  <li>what if no rvm</li>
+</ul>
+
+
+
+
+<h1 id="DocumentationThoughts-Reviewingmatt'shierarchyofpromisesdocument">Reviewing matt's hierarchy of promises document</h1>
+
+<p><a class="external-link" href="https://docs.google.com/document/d/1q7jnOPhCQY1m7udCbAtSh72gTZzNeTUEgzx8fQVfIco/edit" rel="nofollow">https://docs.google.com/document/d/1q7jnOPhCQY1m7udCbAtSh72gTZzNeTUEgzx8fQVfIco/edit</a></p>
+
+<p>look at Islandora user documentation</p>
+
+
+<p>what is the hydra stack?</p>
+
+<p>how is hydra different from a rails app</p>
+
+<p>how do I know whether or not I'm making a hydra-head</p>
+
+<p>"each piece is pretty clear, it's just when you put them into the stack that makes it fuzzy"</p>
+
+<p>how do we make documentation simple?<br>
+high level<br>
+each component</p>
+
+<p>when we say "it might be this, it might be that" it becomes much harder to explain</p>
+
+<p>"hierarchy of promises" - what does each piece do for us?</p>
+
+<p><strong><span style="text-decoration: underline;">Solr</span></strong></p>
+
+
+<p><strong><span style="text-decoration: underline;">Fedora</span></strong></p>
+
+
+<p>We never interact  directly with filesystem, we use Fedora.</p>
+
+<p>Fedora provides these pieces that <strong>we actually use</strong> (remove extraneous information)</p>
+
+
+<p>document:  comparing Fedora to Microservices<br>
+microservices is the next generation design of Fedora, sort of.  Michael Giarlo is interested as of 2012</p>
+
+
+<p>"How Hydra uses Fedora"  &lt;-- not a "promise"</p>
+
+<p>document - how you might leverage other parts of Fedora</p>
+
+
+<p>SQL database and triplestore - not really relevant</p>
+
+<p>Solr ..  it's our search index, and lets us do facets</p>
+
+<p><strong><span style="text-decoration: underline;">Hydra-Jetty</span></strong></p>
+
+
+<p>Hydra-Jetty - gives us a copy of jetty with solr/fedora set up<br>
+addl doc:  how you can install these pieces into the web service of your choice (links out)<br>
+addl doc:  how to set up a production web server(s) with these pieces</p>
+
+
+<p><strong><span style="text-decoration: underline;">Rubydora</span></strong></p>
+
+
+<p>Rubydora - ruby way to talk to fedora rest api<br>
+"is it a gem?"</p>
+
+<p><strong><span style="text-decoration: underline;">ActiveFedora</span></strong></p>
+
+
+<p>ActiveFedora - a way to work with fedora models as easily as sql models in rails<br>
+object-relational mapping to fedora<br>
+you can do the equivalent of modeling/creating schema for  database tables</p>
+
+<p>also affects how you index things into solr.<br>
+how else can this be done (to clarify what is being done with the example)?</p>
+
+<p>if content has xml datastreams ...<br>
+then you're just dealing with xml that could have come from anywhere</p>
+
+<p>"active-fedora uses om pretty centrally"</p>
+
+<p><strong><span style="text-decoration: underline;">OM</span></strong></p>
+
+
+<p>OM a way to have a DSL to map xml into solr field stuff<br>
+simplifying way to manipulate xml<br>
+perhaps I should try skipping it and using nokogiri<br>
+is a way to parse xml into ..</p>
+
+<p>nokogiri, libxml, libxslt  --&gt;  you can always go down to this level and skip the DSL part</p>
+
+<p>OM implies talking to Solr – "currently a convenience thing we could still split off"<br>
+"is it a gem" ?</p>
+
+
+<p><strong><span style="text-decoration: underline;">Solrizer</span></strong></p>
+
+
+<p>way to get stuff into solr<br>
+gives you a basic api interface for connecting to Solr<br>
+you can index an object<br>
+you can index all the known objects<br>
+create the solr document for this given object</p>
+
+<p>it could get the info from fedora, an xml file, a spreadsheet ...</p>
+
+<p>provides a "to_solr" method for OM docs:<br>
+"if you've got an OM terminology, then Solrizer knows what to do with it"<br>
+you can override or extend this</p>
+
+<p>Solrizer itself doesn't do anything - b/c the input to Solrizer link isn't there</p>
+
+<p><strong><span style="text-decoration: underline;">Solrizer-Fedora</span></strong><br>
+the fedora specific implementation, so Fedora is the source of the data going in to Solr</p>
+
+
+<p><strong><span style="text-decoration: underline;">JettyWrapper</span></strong><br>
+to use the hydra jetty,<br>
+start, stop, use hydra jetty in your test suite</p>
+
+<p>Jetty is a peer of tomcat;  it's a java web application server</p>
+
+
+<p>Hydra-Cmodels<br>
+can be used in and of themselves.</p>
+
+
+<p>All of the above is independent of rails.</p>
+
+<p>"I don't know if the application I'm building is a hydra head"<br>
+"I'm interested in using Hydra pieces"<br>
+"Do I need to use the whole stack to get the benefits?"<br>
+"If I don't use the whole stack, am I using Hydra?"<br>
+"How can folks using pieces of the Hydra stack be a part of the community"<br>
+some folks just use hydra cmodels<br>
+some folks use pieces of the stack, but not the whole stack</p>
+
+<p>"How would somebody take these things and use them differently?"  (examples!)<br>
+"which pieces require other pieces"</p>
+
+<p>"Hierarchy of Promises" document is:<br>
+an architectural vision<br>
+a way to look at the stack to determine how we <strong>should</strong> develop the architecture</p>
+
+
+
+<p>"Now for the Controversal part"</p>
+
+<p><strong><span style="text-decoration: underline;">Ruby on Rails</span></strong></p>
+
+
+<p>Ruby on Rails is a way to develop a web application MVC<br>
+Can I use the stack without a Rails app?<br>
+Can I use the stack without a Ruby app?<br>
+M - rails + active-model<br>
+V - rails<br>
+C - rails<br>
+rails gets better and better:  authentication, engines, ...</p>
+
+<p><strong><span style="text-decoration: underline;">Blacklight:</span></strong><br>
+if you have stuff in Solr, you can use Blacklight as a read-only (search and discovery) application to your solr index<br>
+it accommodates heterogenous types of objects</p>
+
+<p>"Each hydra-head has a blacklight for search and discovery"</p>
+
+<p><strong><span style="text-decoration: underline;">HydraHead</span></strong></p>
+
+
+<p>HydraHead - all other application logic needed for hydra head<br>
+AssetsController - deprecated<br>
+CatalogController - deprecated (the <strong>hydra</strong> catalog controller - make a rails controller)<br>
+"how/why do i do a controller?"<br>
+Access Controls - gated discovery, CRUD, granularity   &lt;-- could be its own gem - useful outside of rails<br>
+"what do these do?  how does it work?"<br>
+this is in fedora object, but the app uses it from Solr.<br>
+Official Hydra Object Datastreams and Models</p>
+<ul class="alternate">
+  <li>are the types on the wiki STILL the right types?</li>
+  <li>this code is not really set up for the way we're moving towards with models</li>
+</ul>
+
+
+<p>"does the hydra plugin imply a dependency on fedora?  yes!  if you use hydrahead without fedora, it will blow up"</p>
+
+<p>assumes AF, OM, Solr, Fedora ...<br>
+does NOT assume HydraJetty, or JettyWrapper</p>
+
+<p>Hydra is slanted towards mods</p>
+
+<p>MODS datastream models and so on is provided – has this worn out its welcome as an expectation that is coded in<br>
+"Can I use views if I don't use mods?"</p>
+
+<p>FileAssets and datastreams<br>
+how do you find the actual content?<br>
+how is this exposed in blacklight and in hyhead</p>
+
+<p>Views:<br>
+Submission Workflow - multi-step construction of objects?   any thing besides object construction?<br>
+Mods Submission Workflow – should this just be an exemplar?<br>
+UI/Layout<br>
+Javascript - allows workflow to be shown as a single page; auto-save; customization of jquery date-picker<br>
+here is where "is it a framework or application" becomes troublesome</p>
+
+<p>UI:<br>
+Testability<br>
+Accessability</p>
+
+<p>Tension:  hydra out of the box is something  but  should we be providing views?<br>
+should submission workflow be a separate gem?  etc.</p>
+
+
+<p>Can use Blacklight + AF if you don't want editing<br>
+Can't use HydraHead without<br>
+Chart:  If you use xxx, then you must use yyy</p>
+
+<p>Poll - who uses which pieces?  What versions of those pieces?</p>
+
+
+<p>Your local rails app - blah blah</p>
+
+
+<p>Which pieces are plugins vs. not?  (Blacklight is a plugin)</p>
+
+
+
+<p>What would be easy for people to pick up?  What should be in "HydraHead"?  What should be in "Hydra"?</p>
+
+
+
+
+<p>example models:<br>
+Active-Fedora: sample models and objects with tests in spec directory  (AF approach)<br>
+Hydra-Head:<br>
+official object and datastream models - should be in its own gem?  in HydraHead?</p>
+
+
+<p>random notes:</p>
+
+<p>split out AccessControls so you can apply them to Blacklight (without Hydra)<br>
+"how can i use submission workflow"</p>
+    
+        </div>

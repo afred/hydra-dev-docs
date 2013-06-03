@@ -1,0 +1,58 @@
+<div id="main-content" class="wiki-content">
+                           <h2 id="Hydra'sBundledJetty-AbouttheBundledJetty">About the Bundled Jetty</h2>
+
+<p>When you download the Hydrangea project, there should be a folder in<br>
+there called "jetty."  That's actually linked to another github<br>
+project:</p>
+
+<p><a class="external-link" href="https://github.com/projecthydra/hydra-jetty" rel="nofollow">https://github.com/projecthydra/hydra-jetty</a></p>
+
+<p>hydra-jetty contains a copy of jetty with Fedor and Solr pre-installed for you.  All you need to do is grab that code and run it.</p>
+
+<p>In most cases, you grab this code by running these commands at the root of your working directory:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<div><div id="highlighter_791865" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">git submodule init</code></div><div class="line number2 index1 alt1"><code class="java plain">git submodule update</code></div></div></td></tr></tbody></table></div></div>
+</div></div>
+
+<h3 id="Hydra'sBundledJetty-Application-specificConfigurationfilesforJetty">Application-specific Configuration files for Jetty</h3>
+
+<p>Each Hydra head is likely to require some application-specific changes to the solr configuration files.  If you save those config files in "solr/config", the hydra:jetty rake tasks will help you load them into jetty.  You will also know where to grab them when you're spinning up your production solr instance on a server.</p>
+
+<h3 id="Hydra'sBundledJetty-RunningJetty">Running Jetty</h3>
+
+<p>If you have pulled the code into the "jetty" directory, you can now use the hydra:jetty rake tasks to run it.</p>
+
+<p>hydra:jetty:start will start jetty for you<br>
+hydra:jetty:stop will stop jetty for you<br>
+hydra:jetty:load will load your application-specific solr configuration files into jetty before starting it</p>
+
+<h2 id="Hydra'sBundledJetty-Tips&amp;Tricks">Tips &amp; Tricks</h2>
+
+<h3 id="Hydra'sBundledJetty-Analternativewaytousehydra-jetty">An alternative way to use hydra-jetty</h3>
+
+<p>When my copy of jetty got messed up,  I removed the entire jetty folder and re-<br>
+downloaded the whole hydra-jetty project from github and made a<br>
+separate subproject within my hydrangea app.  So from your hydrangea<br>
+RAILS_ROOT:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<div><div id="highlighter_519253" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">rm -Rf jetty</code></div><div class="line number2 index1 alt1"><code class="java plain">mkdir jetty</code></div><div class="line number3 index2 alt2"><code class="java plain">cd jetty</code></div><div class="line number4 index3 alt1"><code class="java plain">git init</code></div><div class="line number5 index4 alt2"><code class="java plain">git remote add upstream https:</code><code class="java comments">//github.com/projecthydra/hydra-jetty</code></div><div class="line number6 index5 alt1"><code class="java plain">git pull</code></div></div></td></tr></tbody></table></div></div>
+</div></div>
+
+<p>Or something to that effect...  Now I can treat the entire jetty<br>
+folder as it's own project and make local branches within it if I need<br>
+to test out changes to any of the xml config files.  Although, at the<br>
+moment I'm not changing any of it because I'm not that savvy with Solr<br>
+yet.</p>
+
+<p>Make sure you're not running any other outside Fedora or Solr apps,<br>
+and when you run rake hydra:jetty:load it should startup the Fedora<br>
+and Solr webapps from within the jetty folder of your hydrangea app.<br>
+If it's working correctly, you'll be able to access both Fedora and<br>
+Solr:</p>
+
+<p><a class="external-link" href="http://localhost:8983/solr/" rel="nofollow">http://localhost:8983/solr/</a>
+<a class="external-link" href="http://localhost:8983/fedora" rel="nofollow">http://localhost:8983/fedora</a></p>
+    
+        </div>
