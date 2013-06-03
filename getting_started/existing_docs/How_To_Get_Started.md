@@ -87,16 +87,16 @@ Moreover, to ensure your localizations won’t be broken by upgrading the Hydra 
 
 ### Initial Modifications to Your Own Hydra Application
 
-”YOUR Hydra Application - Initial Modifications“:https://github.com/projecthydra/hydra-head/wiki/YOUR-Hydra-Application—Initial-Modifications explains how to make two basic changes to your hydra rails application and how to write the appropriate tests for them. You should review the Initial App Mods document before continuing this tutorial.
+[YOUR Hydra Application - Initial Modifications](https://github.com/projecthydra/hydra-head/wiki/YOUR-Hydra-Application—Initial-Modifications) explains how to make two basic changes to your hydra rails application and how to write the appropriate tests for them. You should review the Initial App Mods document before continuing this tutorial.
 
 ## Adding a new Content Type
 
-”Content Type Example: Journal Article“:https://github.com/projecthydra/hydra-head/wiki/Content-Type-Example:-Journal-Article steps through adding the Journal Article content type to a Hydra Application, including all the parts needed in each of the MVC pieces.
+[Content Type Example: Journal Article](https://github.com/projecthydra/hydra-head/wiki/Content-Type-Example:-Journal-Article) steps through adding the Journal Article content type to a Hydra Application, including all the parts needed in each of the MVC pieces.
 
 ## Hydra Modeling Conventions
 
-See”Hydra Modeling Conventions“:https://github.com/projecthydra/hydra-head/wiki/Models—Hydra-Conventions
+See[Hydra Modeling Conventions](https://github.com/projecthydra/hydra-head/wiki/Models—Hydra-Conventions)
 
 ## For Further Information
 
-See”Reference":https://github.com/projecthydra/hydra-head/wiki/Reference for more links.
+See [Reference](https://github.com/projecthydra/hydra-head/wiki/Reference) for more links.
