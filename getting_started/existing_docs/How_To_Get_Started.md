@@ -95,7 +95,7 @@ Moreover, to ensure your localizations won’t be broken by upgrading the Hydra 
 
 ## Hydra Modeling Conventions
 
-See[Hydra Modeling Conventions](https://github.com/projecthydra/hydra-head/wiki/Models—Hydra-Conventions)
+See [Hydra Modeling Conventions](https://github.com/projecthydra/hydra-head/wiki/Models---Hydra-Conventions)
 
 ## For Further Information
 
