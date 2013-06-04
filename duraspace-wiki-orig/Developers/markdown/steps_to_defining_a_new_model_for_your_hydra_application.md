@@ -1,3 +1,5 @@
+# Steps to Defining a New Model for Your Hydra Applications
+
 To Define the Model
 
 1.  Choose what Metadata Schemas you will be using

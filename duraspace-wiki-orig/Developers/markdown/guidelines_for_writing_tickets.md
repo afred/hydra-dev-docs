@@ -1,3 +1,5 @@
+# Guidelines for Writing Tickets
+
 #### The Basic Idea: Cucumber-style stories {#Guidelinesforwritingtickets-TheBasicIdea:Cucumber-stylestories}
 
 If possible, use [Gherkin](http://github.com/aslakhellesoy/cucumber/wiki/Gherkin) syntax to write [Cucumber](http://cukes.info/)-style stories in your ticket descriptions. Cucumber uses the uses Gherkin's [Given-When-Then](https://github.com/aslakhellesoy/cucumber/wiki/Given-When-Then) format to define steps within a given scenario.

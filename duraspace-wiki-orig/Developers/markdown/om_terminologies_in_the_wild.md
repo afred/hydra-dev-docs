@@ -1,3 +1,5 @@
+# OM Terminologies in the wild.
+
 Hydra has released a Hydra Head tutorial. As you step through the tutorial it actually builds a hydra head on your local machine.
 
 In more detail, the tutorial:
@@ -19,8 +21,7 @@ The tutorial can be found in the projecthydra git repository: [https://github.co
 
 and it is a simple as
 
-\$ gem install hydra-tutorial
+    gem install hydra-tutorial
+    hydra-tutorial
 
-\$ hydra-tutorial
-
-…to get going! Many thanks to Chris Beer for this wonderful addition to Hydra’s armoury.
+to get going! Many thanks to Chris Beer for this wonderful addition to Hydra’s armoury.

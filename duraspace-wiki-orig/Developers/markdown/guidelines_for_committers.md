@@ -1,3 +1,5 @@
+# Guidelines for Committers
+
 [Committing to the Shared Git Repository](#GuidelinesforCommitters-CommittingtotheSharedGitRepository)
 
 [Use a branch for any work in progress](#GuidelinesforCommitters-Useabranchforanyworkinprogress)
@@ -16,9 +18,9 @@
 
 -   [Sample commit messages](#GuidelinesforCommitters-Samplecommitmessages)
 
-## Committing to the Shared Git Repository {#GuidelinesforCommitters-CommittingtotheSharedGitRepository}
+## Committing to the Shared Git Repository
 
-**Note**: If you *are not* a committer on a project, please refer to the [Guidelines for contributors](/display/hydra/Guidelines+for+Contributors) for information on how you can contribute code using pull requests. If you *are* a committer on a project, read these guidelines for contributing directly to the shared Git repository.
+**Note**: If you *are not* a committer on a project, please refer to the [Guidelines for contributors](https://wiki.duraspace.orgdisplay/hydra/Guidelines+for+Contributors) for information on how you can contribute code using pull requests. If you *are* a committer on a project, read these guidelines for contributing directly to the shared Git repository.
 
 The code for each of the shared Hydra projects is collectively maintained by the project's committers. Each project has a technical lead and/or a release manager, but most decisions are made collectively.
 
@@ -31,13 +33,13 @@ The code for each of the shared Hydra projects is collectively maintained by the
 
 See [Git Workflow for Hydra Projects](http://hudson.projecthydra.org/job/hydra-head-rails3-plugin/Documentation/file.GIT_WORKFLOW.html) for more information about how to create branches and use git when working on a Hydra project.
 
-Also refer to the General Tips on the [Ways to Contribute Code](/display/hydra/Ways+to+Contribute+Code) page.
+Also refer to the General Tips on the [Ways to Contribute Code](https://wiki.duraspace.orgdisplay/hydra/Ways+to+Contribute+Code) page.
 
-### Use a branch for any work in progress {#GuidelinesforCommitters-Useabranchforanyworkinprogress}
+### Use a branch for any work in progress
 
 When starting work on a new feature, or merging features from another project, first create a remote git branch named after the most relevant Jira ticket. *Don't have a jira ticket for your work? [Create one](https://wiki.duraspace.org/display/hydra/Developers#Developers-Tickets%3AReportingBugs%26RequestingFeatures).*
 
-### Always write tests for your code {#GuidelinesforCommitters-Alwayswritetestsforyourcode}
+### Always write tests for your code
 
 Everyone should always write tests for the code they contribute, but it is especially important for committers to police themselves in this respect. You should be writing RSpec *and* Cucumber tests whenever applicable.
 
@@ -52,16 +54,16 @@ Committers (people with push permissions on the git repository) take responsibil
 
 Once you've found a reviewer, you can transition your Jira ticket into review and assign a reviewer.
 
-### Rebase branches before committing to master or handing off to someone else {#GuidelinesforCommitters-Rebasebranchesbeforecommittingtomasterorhandingofftosomeoneelse}
+### Rebase branches before committing to master or handing off to someone else
 
 Do not rebase on a public branch. Therefore, before rebasing, create a local branch of your public feature branch, rebase and then fast-forward merge with master.
 
 See [Diaspora Git Workflow](https://github.com/diaspora/diaspora/wiki/Git-Workflow) for more info about rebasing.
 
-### Merge your own branches to master {#GuidelinesforCommitters-Mergeyourownbranchestomaster}
+### Merge your own branches to master
 
-Committers are responsible for merging their own branches into master when their work is finished.\
- If you're making major changes, or changes you want to discuss before merging into master, email the [hydra-tech](http://groups.google.com/group/hydra-tech) list and/or put yourself on the agenda for the next [Committers Call](/display/hydra/Notes+from+Meetings+and+Calls).
+Committers are responsible for merging their own branches into master when their work is finished.
+ If you're making major changes, or changes you want to discuss before merging into master, email the [hydra-tech](http://groups.google.com/group/hydra-tech) list and/or put yourself on the agenda for the next [Committers Call](https://wiki.duraspace.orgdisplay/hydra/Notes+from+Meetings+and+Calls).
 
 ### Delete remote branches when they're finished {#GuidelinesforCommitters-Deleteremotebrancheswhenthey'refinished}
 
@@ -73,7 +75,7 @@ Ex. If you want to delete a remote branch called hydra-375
 
 `git push origin :hydra-`{.java .plain}`375`{.java .value}
 
-### Git commit messages {#GuidelinesforCommitters-Gitcommitmessages}
+### Git commit messages
 
 Commit messages should follow the guidelines described in detail at [http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
 
@@ -85,7 +87,7 @@ In summary:
 
 Use the present tense when writing messages, i.e. "Fix bug, apply patch", not "Fixed bug, applied patch."
 
-#### Sample commit messages {#GuidelinesforCommitters-Samplecommitmessages}
+#### Sample commit messages
 
 -   linked to a JIRA issue:
 

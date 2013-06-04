@@ -1,14 +1,16 @@
-## When to submit a Pull Request {#GuidelinesforContributors-WhentosubmitaPullRequest}
+# Guidelines for Contributors
+
+## When to submit a Pull Request
 
 If you are not a committer on a project, you can still contribute code by submitting pull requests. When you submit a pull request, one of the project committers can then merge your changes into the project.
 
-If you *are* a committer on the project, you can skip the pull request and instead push a new branch with your changes. For more info on this, please refer to the [Ways to Contribute Code](/display/hydra/Ways+to+Contribute+Code).
+If you *are* a committer on the project, you can skip the pull request and instead push a new branch with your changes. For more info on this, please refer to the [Ways to Contribute Code](https://wiki.duraspace.orgdisplay/hydra/Ways+to+Contribute+Code).
 
-## Before Submitting your Pull Request {#GuidelinesforContributors-BeforeSubmittingyourPullRequest}
+## Before Submitting your Pull Request
 
 Before submitting a pull request, send an email to the hydra-tech mailing list describing the changes you're contributing. The committers might also ask you to join the weekly committers call to discuss your contribution(s).
 
-Please follow the recommended practices listed in the [Developers](/display/hydra/Developers) pages and refer to the General Tips on the [Ways to Contribute Code](/display/hydra/Ways+to+Contribute+Code) page.
+Please follow the recommended practices listed in the [Developers](https://wiki.duraspace.orgdisplay/hydra/Developers) pages and refer to the General Tips on the [Ways to Contribute Code](https://wiki.duraspace.orgdisplay/hydra/Ways+to+Contribute+Code) page.
 
 ## Git Technique: Submitting topic/feature branches from your own fork of the Hydrangea tree to the "upstream" shared repository {#GuidelinesforContributors-GitTechnique:Submittingtopic/featurebranchesfromyourownforkoftheHydrangeatreetothe"upstream"sharedrepository}
 

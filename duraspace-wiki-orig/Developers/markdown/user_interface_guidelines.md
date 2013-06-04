@@ -1,10 +1,12 @@
-## General Guidelines {#UserInterfaceGuidelines-GeneralGuidelines}
+# User Interface Guidelines
 
-[HTML Validation](/pages/createpage.action?spaceKey=hydra&title=HTML+Validation&linkCreation=true&fromPageId=25466708)\
- [Progressive Enhancement](/pages/createpage.action?spaceKey=hydra&title=Progressive+Enhancement&linkCreation=true&fromPageId=25466708)\
+## General Guidelines
+
+[HTML Validation](/pages/createpage.action?spaceKey=hydra&title=HTML+Validation&linkCreation=true&fromPageId=25466708)
+ [Progressive Enhancement](/pages/createpage.action?spaceKey=hydra&title=Progressive+Enhancement&linkCreation=true&fromPageId=25466708)
  [Unobtrusive Javascript](/pages/createpage.action?spaceKey=hydra&title=Unobtrusive+Javascript&linkCreation=true&fromPageId=25466708)
 
-## Specific UI Components {#UserInterfaceGuidelines-SpecificUIComponents}
+## Specific UI Components
 
-[Split Buttons](/display/hydra/Split+Buttons)\
+[Split Buttons](https://wiki.duraspace.orgdisplay/hydra/Split+Buttons)
  [Definition Lists](/pages/createpage.action?spaceKey=hydra&title=Definition+Lists&linkCreation=true&fromPageId=25466708)
