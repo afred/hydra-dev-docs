@@ -1,65 +1,109 @@
-# Enhancing Hydra Developer Documentation
+# Hydra Developer Documentation: Review, Consolidate, Organize.
 
-This project was started as an effort to make some improvements to the developer documentation for Hydra that were identified at the Hydra Partners meeting at Stanford in March 2013.
+This project is an effort to make some improvements to the developer documentation for Hydra that were [identified at the Hydra Partners meeting at Stanford in March 2013](https://wiki.duraspace.org/display/hydra/Documentation+Framework+Discussion+at+Hydra+Partners+-+March+2013).
 
-These include, but are not limited to:
+### Objectives
 
-- Update list of knowledge required
-- Identify and nuke stale docs
-- Version docs with code
-- (?) Have own repository for documentation
-- Tips, pointers, best practices
-- Migrate developer documentation from Duraspace to git hub
-  - communicate the move
-  - request time boxed approval
-- Documentation audit and automation at Boston mtg (1/2 day)
-- Module of what I need to know as a manager
+- Review, consolidate, and organize content from the [hydra-head wiki](https://github.com/projecthydra/hydra-head/wiki), and the "for Developers" section of the [Duraspace wiki](https://wiki.duraspace.org/display/hydra/Developers).
+- Consolidated and organized content goes in [the wiki for this project](https://github.com/afred/hydra-dev-docs/wiki).
+- Archive content from Duraspace Wiki in ["Archived Developer Documentation"](https://wiki.duraspace.org/display/hydra/Archived+Developer+Documentation).
+- Add steps for versioning the wiki with the code in documentation about cutting releases.
 
-**NOTE:** While Hydra is comprised of many different projects working together, this effort is focused primarily on the **hydra-head**.
+###### What we _don't_ want to do right now
 
-### Main Objectives for this effort
+- Refactor pages meant for non-developers from the Duraspace Wiki.
+- Refactor github wikis for any other gem besided `hydra-head`.
 
-- Review original pages from the hydra-head wiki, and the Duraspace wiki.
-- Combine duplicate content
-- Organize content such that places to put new, relevant content are obvious.
-- Remove migrated content from Duraspace wiki, referencing the new location.
 
-### Original pages from Hydra-Head Github Wiki
+### Overall Workflow
 
-The original wiki files from https://github.com/projecthydra/hydra-head/wiki have been saved down in this repo at https://github.com/afred/hydra-dev-docs/tree/master/hydra-head-wiki-orig. We can use these as a starting point
+Here's is the general workflow. See sections below for further details:
 
-Also, the wiki for _this_ repo started as a clone of https://github.com/projecthydra/hydra-head/wiki, but should serve as a sandbox for getting the wiki to an improved state.
+1. Identify docs from hydra-head wiki, or Duraspace wiki that need addressed.
+1. Create a ticket in github (a.k.a. "issues") to review, consolidate, and/or organize the content.
+1. Work the ticket.
+  - If we're keeping the content, add it to [this wiki](https://github.com/afred/hydra-dev-docs/wiki).
+  - Archive old page(s), if applicable.
+1. Close the ticket. Do a little dance.
 
-### Original Pages from Duraspace wiki.
+##### When are we done?
 
-One of the objectives above, is to migrate developer docs from https://wiki.duraspace.org/display/hydra/Developers to the hydra-head wiki at https://github.com/projecthydra/hydra-head/wiki.
+The content from the [this wiki](https://github.com/afred/hydra-dev-docs/wiki) will be consolidated into hydra-head wiki proper after approval by the community. This approval process is TBD, will involve a call to action announced on the [hydra-tech mailing list](https://groups.google.com/forum/?fromgroups#!forum/hydra-tech) at the very least.
 
-I grabbed all pages I could find under the "Developers" part of the wiki, and put them in this repo under https://github.com/afred/hydra-dev-docs/tree/master/duraspace-wiki-orig/Developers. The html file there are essentially the markup found in the `<div id="main-content" class="wiki-content">` element of each page, with page titles added manually after the fact.
+### Creating Tickets
 
-**NOTE:** There may be other relevant docs from the Duraspace wiki intended mainly for Developers which should be identified, and included in this migration.
+We're using Github to track progress on reviewing, consolidating, and organizing docs.
 
-#### My steps for converting Duraspace wiki pages to github markdown.
+1. Check the [github issues](https://github.com/afred/hydra-dev-docs/issues) to see if there is already a ticket for the documents. If not, then create a new ticket.
+1. The **Title** field should include the name of the document being addressed, and a brief description of what needs to be done, e.g. **Include content from Duraspace wiki page, "Guidelines For Committers", and archive the original.**
+1. Include the following info (if applicable) in the **Comments**:
+  - where the content should be included in the new wiki
+  - link to original document or archived location
+  - if only some of the content was included, briefly mention what was kept and what was not.
 
-I'm using:
-- Chrome
-- Sublime Text 2
-- Pandoc plugin for Sublime to convert from HTML to MD.
+### Archiving old pages from hydra-head github wiki
 
-1. Navigate to the desired page.
-1. Get the markup you're after, the stuff with the actual content.
-  1. using chrome, right click to 'Inspect Element'
-  1. Find the html node containing the content
-  1. right click and select 'Copy as HTML'
-1. Paste into Sublime and save it with `.html` extension.
-1. `Cmd+P` to open your list of available packages, and select Pandoc.
-1. The list will change to available formats, select Markdown. This will create a new file with the markdown. Save it with `.md` extension.
-1. Prepend relative URLs in parentheses with root URL of duraspace wiki
-  1. Use this regex to find (most of) them: `\(\/([a-zA-Z0-9\/_\-\+:\/\.%]+)\)`
-  1. And replace with this: `(https:wiki.duraspace.org/\1)`. For me, `\1` is the variable with my first match from the regex.
-1. Remove the wiki's table of contents anchors, that look something like this `{#Name-of-the-anchor}`
-  1. this regex will find (most of) them: `*\{([a-zA-Z0-9:#\-\?_\+&"-\(\)]*)\}` (note the prepended space(s))
-  1. And just replace them with empty string.
-1. Pandoc puts trailing backslashes in for some reason, so remove those.
-  1. this regex will find them: `\\$`
-  1. and just replace them with empty string.
-1. And there are probably some one-off stuff too. This is just to get us close.
+We are in the process of implementing a workflow to clone the hydra-head wiki and save it in the hydra-head repo (location TBD). Once this is in place, archiving the wiki with the code will be inherent in the release process.
+
+### Archiving Duraspace Wiki pages
+
+Instead of nuking the Duraspace wiki pages, we have decided to:
+
+1. mark them with a deprecation message warning
+1. move them to [Archived Develper Documentation](https://wiki.duraspace.org/display/hydra/Archived+Developer+Documentation)
+
+##### To add the deprecation warning to Duraspace wiki pages:
+
+1. Go to the page you wish move to "Archived Developer Documentation".
+1. Click the 'Edit' icon (top right).
+1. Open the source editor by clicking the button labeled `<>` (top right).
+1. Prepend the following markup in the source editor, and click 'Apply' (bottom left)
+
+    ```html
+    <ac:macro ac:name="warning">
+      <ac:rich-text-body>
+        <p>WARNING: This content has been deprecated!</p>
+        <ac:macro ac:name="highlight">
+          <ac:parameter ac:name="atlassian-macro-output-type">BLOCK</ac:parameter>
+          <ac:rich-text-body>
+            <p>Please browse or search the main wiki for more up-to-date content.</p>
+          </ac:rich-text-body>
+        </ac:macro>
+      </ac:rich-text-body>
+    </ac:macro>
+    <p> </p>
+    ```
+
+1. View the change by clicking button labeled 'Preview >'. The page should have a red box with the deprecation warning in it just below the page title.
+1. If the deprecation warning looks good, click 'Save'.
+
+##### To move Duraspace wiki pages to "Archived Developer Documentation":
+
+1. Go to the page you wish move to "Archived Developer Documentation".
+1. From the **Tools** menu (top right), select **Move**.
+1. In the box labeled **New parent page:** type "Archived Developer Documentation". It should show up as one of the options as you type.
+1. Click **Move**.
+
+### Other Notes
+
+##### Wiki pages saved in this repo
+
+For convenience, content from both wikis has been saved to this repo (as of ~ 6/3/2013):
+
+- [Duraspace pages (converted to markdown)](https://github.com/afred/hydra-dev-docs/tree/master/duraspace-wiki-orig)
+- [hydra-head wiki pages](https://github.com/afred/hydra-dev-docs/tree/master/hydra-head-wiki-orig)
+
+##### Converting Duraspace Wiki pages to markdown.
+
+- When viewing the source of a Duraspace wiki page, the main content is contained within
+    
+    ```html
+    <div id="main-content" class="wiki-content">
+      ...
+    </div>
+    ```
+
+- I use Sublime Text 2 + a package called Pandoc to convert html to markdown. Pandoc is pretty rad.
+- Helpful regular expressions:
+  - `\(\/([a-zA-Z0-9\/_\-\+:\/\.%]+)\)` -- helps find relative URLs inside of parentheses.
+  - `*\{([a-zA-Z0-9:#\-\?_\+&"-\(\)]*)\}` -- helps find table of contents anchors
