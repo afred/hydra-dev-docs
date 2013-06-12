@@ -35,11 +35,12 @@ The content from the [this wiki](https://github.com/afred/hydra-dev-docs/wiki) w
 We're using Github to track progress on reviewing, consolidating, and organizing docs.
 
 1. Check the [github issues](https://github.com/afred/hydra-dev-docs/issues) to see if there is already a ticket for the documents. If not, then create a new ticket.
-1. The **Title** field should include the name of the document being addressed, and a brief description of what needs to be done, e.g. **Include content from Duraspace wiki page, "Guidelines For Committers", and archive the original.**
-1. Include the following info (if applicable) in the **Comments**:
-  - where the content should be included in the new wiki
-  - link to original document or archived location
-  - if only some of the content was included, briefly mention what was kept and what was not.
+1. Tickets should include the following, as applicable:
+  - Title and URL of originating document that needs reviewed, consolidated, organized, and/or archived.
+  - Concise description of what needs to be done, e.g.:
+    - **"Consolidate content from Duraspace wiki page 'Guidelines For Committers' into new 'Contributors' page."**
+    - **"Consolidate content from hydra-head wiki page 'For Contributors' into new 'Contributors' page. Content is redundant."**
+    - **"Archive Duraspace wiki page 'Step Definitions'. No longer relevant for hydra-head."**
 
 ### Archiving old pages from hydra-head github wiki
 
@@ -88,7 +89,7 @@ Instead of nuking the Duraspace wiki pages, we have decided to:
 
 ##### Wiki pages saved in this repo
 
-For convenience, content from both wikis has been saved to this repo (as of ~ 6/3/2013):
+Content from both wikis has been saved to this repo (as of ~ 6/3/2013). This is only for convenience for viewing content. These files have no other purpose.
 
 - [Duraspace pages (converted to markdown)](https://github.com/afred/hydra-dev-docs/tree/master/duraspace-wiki-orig)
 - [hydra-head wiki pages](https://github.com/afred/hydra-dev-docs/tree/master/hydra-head-wiki-orig)
